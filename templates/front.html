@@ -1,0 +1,17 @@
+<!-- JINJA2 CHILD TEMPLATE - FRONT -->
+{% extends "base.html" %}
+
+<!-- THIS IS A MAJOR DEPENDENCY OF THE MULTI-USER BLOG PROJECT
+This template is borrowed from the project answer files in the intro
+to backend course in preparation for the multi-user blog project -->
+
+{% block content %}
+
+<!-- for each post in the posts table it calls render_post from the post class in main.py -->
+  <h3>Recent posts.</h3>
+  {% for post in posts %}
+    {{ post.render_post(login_id, post.key().id()) | safe }}
+    <br><br>
+  {% endfor %}
+
+{% endblock content %}

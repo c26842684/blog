@@ -1,0 +1,37 @@
+<!-- JINJA2 TEMPLATE EXTENSION -->
+{% extends "base.html" %}
+
+<!-- THIS IS NOT A DEPENDENCY FOR THE MULTI USER BLOG
+This template is a part of the forms and templates portion
+of the intro to backend course in preparation for the multi-user
+blog project -->
+
+{% block content %}
+<form>
+	<h2>Add Food</h2>
+	<input type="text" name="food">
+	<button>Add</button>
+
+	<!-- Begin jinja2 logic for adding hidden items to our list -->
+	{% if items%}
+		{% for item in items %}
+			<input type="hidden" name="food" value="{{item}}">
+		{% endfor %}
+	{% endif %}
+
+	{% if items %}
+		<br>
+		<br>
+
+		<h2>Shopping List</h2>
+		<ul>
+		{%for item in items %}
+			<li>{{item}}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+	<!-- End jinja2 logic -->
+
+</form>
+
+{% endblock %}

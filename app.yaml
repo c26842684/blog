@@ -1,0 +1,33 @@
+application: multi-user-blog-1321
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /images
+  static_dir: images
+
+#  Defines how the app will be
+#  interepreted using the "WSGI_APP" constant
+#  defined at the end of the main file.
+- url: .*
+  script: main.WSGI_APP
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: latest
+
